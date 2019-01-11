@@ -7,7 +7,6 @@ LastName varchar(255),
 Address varchar(255),
 City varchar(255)
 )
-GO
 
 INSERT INTO Persons(PersonID, FirstName, LastName, Address, City)
 VALUES (1, 'saba', 'koghuashvili', 'banoja', 'Kutaisi')
