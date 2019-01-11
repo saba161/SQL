@@ -10,5 +10,4 @@ City varchar(255)
 
 INSERT INTO Persons(PersonID, FirstName, LastName, Address, City)
 VALUES (1, 'saba', 'koghuashvili', 'banoja', 'Kutaisi')
-
 SELECT * FROM Persons
