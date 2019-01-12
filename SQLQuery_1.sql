@@ -1,13 +1,14 @@
-CREATE DATABASE Saba;
+CREATE DATABASE Persons
 
-CREATE TABLE Persons(
-PersonID int,
-FirstName varchar(255),
-LastName varchar(255),
-Address varchar(255),
-City varchar(255)
+CREATE TABLE Student(
+    PersonID int,
+    FirstName VARCHAR(20),
+    LastName VARCHAR(20),
+    Country VARCHAR(20),
+    City VARCHAR(20)
 )
 
-INSERT INTO Persons(PersonID, FirstName, LastName, Address, City)
-VALUES (1, 'saba', 'koghuashvili', 'banoja', 'Kutaisi')
-SELECT * FROM Persons
+INSERT INTO Student(PersonID, FirstName, LastName, Country, City)
+VALUES(1, 'Saba', 'Koghuashvili', 'Georgia', 'Kutaisi')
+
+SELECT * FROM Student
