@@ -12,3 +12,6 @@ INSERT INTO Student(PersonID, FirstName, LastName, Country, City)
 VALUES(1, 'Saba', 'Koghuashvili', 'Georgia', 'Kutaisi')
 
 SELECT * FROM Student
+
+UPDATE Student
+SET PersonID = 99
