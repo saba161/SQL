@@ -9,7 +9,7 @@ CREATE TABLE Student(
 )
 
 INSERT INTO Student(PersonID, FirstName, LastName, Country, City)
-VALUES(2, 'Saba', 'Koghuashvili', 'Georgia', 'Kutaisi')
+VALUES(3, 'Saba', 'Koghuashvili', 'Georgia', 'Kutaisi')
 
 ALTER TABLE Student
 ADD CONSTRAINT UC_Student UNIQUE (PersonID)
@@ -17,3 +17,8 @@ ADD CONSTRAINT UC_Student UNIQUE (PersonID)
 SELECT * FROM Student;
 DROP TABLE Student;
 
+ALTER TABLE Student
+ADD UserID int IDENTITY(1,1)
+
+ALTER TABLE Student
+ADD PRIMARY KEY (UserID);
