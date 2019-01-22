@@ -2,16 +2,18 @@ CREATE DATABASE Persons
 
 CREATE TABLE Student(
     PersonID int,
-    FirstName VARCHAR(20),
+    FirstName VARCHAR(20)   ,
     LastName VARCHAR(20),
     Country VARCHAR(20),
     City VARCHAR(20)
 )
 
 INSERT INTO Student(PersonID, FirstName, LastName, Country, City)
-VALUES(1, 'Saba', 'Koghuashvili', 'Georgia', 'Kutaisi')
+VALUES(2, 'Saba', 'Koghuashvili', 'Georgia', 'Kutaisi')
 
-SELECT * FROM Student
+ALTER TABLE Student
+ADD CONSTRAINT UC_Student UNIQUE (PersonID)
 
-UPDATE Student
-SET PersonID = 99
+SELECT * FROM Student;
+DROP TABLE Student;
+
