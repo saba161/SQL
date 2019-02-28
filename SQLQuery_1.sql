@@ -1,42 +1,12 @@
-CREATE DATABASE Persons
-
-CREATE TABLE Student(
-    PersonID int,
-    FirstName VARCHAR(20)   ,
-    LastName VARCHAR(20),
-    Country VARCHAR(20),
-    City VARCHAR(20)
-)
-
-INSERT INTO Student(PersonID, FirstName, LastName, Country, City)
-VALUES(3, 'Saba', 'Koghuashvili', 'Georgia', 'Kutaisi'),
-(4, 'Saba', 'Koghuashvili', 'Georgia', 'Kutaisi'),
-(5, 'lado', 'Kogli', 'Georgia', 'tbilisi'),
-(6, 'jano', 'irema', 'Georgia', 'batumi'),
-(7, 'nunu', 'loer', 'Georgia', 'xoni')
-
-
-ALTER TABLE Student
-ADD CONSTRAINT UC_Student UNIQUE (PersonID)
-
-SELECT * FROM Student;
-DROP TABLE Blog;
-
-ALTER TABLE Student
-ADD UserID int IDENTITY(1,1)
-
-ALTER TABLE Student
-ADD PRIMARY KEY (UserID);
-
-CREATE TABLE Blog (
-    BlogId int IDENTITY(1,1),
-    Name NVARCHAR(50) NOT NULL,
-    CreateDate DATETIME NOT NULL
-)
+Select * from [dbo].[Cars]
+Go
+SELECT * from [dbo].[Cars] where color = 'Silver' and Transmission = 'Automatic'
+Go
+Select * from [dbo].[Cars] where Year between 2010 and 2015 and Make in ('acura', 'Mazda',
+'Nissan', 'Infiniti', 'Toyota', 'Subaru', 'Lexus', 'Honda') 
+Go
+Select * from [dbo].[Cars] where Color = 'White' and Transmission = 'Manual' and Milage = 0
+Go
+Select  c.Make, c.Model, c.Milage from [dbo].[Cars] c where ListedPrice < 15000 and Milage < 100000
 Go
 
- 
-
-ALTER TABLE Blog
-ADD UserId int NOT NULL
-GO
