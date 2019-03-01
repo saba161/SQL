@@ -15,3 +15,5 @@ SELECT a.Make, a.Condition, a.Color FROM cars a WHERE a.Make = 'ford' and a.Cond
 GO
 SELECT a.Year, a.Transmission, a.BodyStyle FROM cars a WHERE a.BodyStyle like 'coupe' and a.Transmission like 'manual' and a.Year BETWEEN 2016 and 2017
 GO
+CREATE DATABASE books
+CREATE TABLE book()
