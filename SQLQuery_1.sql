@@ -1,12 +1,17 @@
-Select * from [dbo].[Cars]
+SELECT * FROM cars
 Go
-SELECT * from [dbo].[Cars] where color = 'Silver' and Transmission = 'Automatic'
+SELECT * FROM cars where Color = 'silver' and Transmission = 'automatic'
 Go
-Select * from [dbo].[Cars] where Year between 2010 and 2015 and Make in ('acura', 'Mazda',
-'Nissan', 'Infiniti', 'Toyota', 'Subaru', 'Lexus', 'Honda') 
-Go
-Select * from [dbo].[Cars] where Color = 'White' and Transmission = 'Manual' and Milage = 0
-Go
+SELECT * FROM cars WHERE Year BETWEEN 2010 and 2015 and Make in ('Acura', 'Mazda',
+'Nissan', 'Infiniti', 'Toyota', 'Subaru', 'Lexus', 'Honda')
+GO
+SELECT * FROM cars WHERE Milage = 0 and Color = 'white' and Transmission = 'manual'
+GO
 Select  c.Make, c.Model, c.Milage from [dbo].[Cars] c where ListedPrice < 15000 and Milage < 100000
-Go
-
+GO
+SELECT a.Make, a.Model, a.Color FROM cars a WHERE a.Make like 'c%' and (a.Model like 'a%' OR a.Make like 'e%')
+GO
+SELECT a.Make, a.Condition, a.Color FROM cars a WHERE a.Make = 'ford' and a.Condition = 'new' and a.Color in ('black','gray')
+GO
+SELECT a.Year, a.Transmission, a.BodyStyle FROM cars a WHERE a.BodyStyle like 'coupe' and a.Transmission like 'manual' and a.Year BETWEEN 2016 and 2017
+GO
