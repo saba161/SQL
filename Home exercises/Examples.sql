@@ -14,6 +14,7 @@ CREATE TABLE Orders(
     Cost INT,
     Quantity INT,
 )
+
 --INSERT VALUES in First Table
 INSERT INTO Customer (FirstName, LastName, Order_Product)
     VALUES('Saba', 'Koghuashvili', 2)
