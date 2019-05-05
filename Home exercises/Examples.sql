@@ -1,14 +1,16 @@
 --First Table
 CREATE TABLE Customer(
-    CustomerID INT IDENTITY (1,1),
+    CustomerID INT IDENTITY (1,1) PRIMARY KEY,
     FirstName NVARCHAR(50),
     LastName NVARCHAR(50),
     Order_Product INT
+    FOREIGN KEY (CustomerId)  REFERENCES Customer (CustomerId)
+
 )
 
 --Second TABLE
 CREATE TABLE Orders(
-    OrderID INT IDENTITY (1,1),
+    OrderID INT IDENTITY (1,1) PRIMARY KEY,
     CustomerID INT,
     Model NVARCHAR(50),
     Cost INT,
@@ -24,19 +26,22 @@ INSERT INTO Customer (FirstName, LastName, Order_Product)
 
 --INSERT VALUES in Second Table
 INSERT INTO Orders (CustomerID, Cost, Quantity, Model)
-    VALUES (2, 200, 10, 'Iphone');
-INSERT INTO Orders (CustomerID, Cost, Quantity)
-    VALUES(1, 1000, 5)
+    VALUES (2, 500, 9, 'Simens');
+INSERT INTO Orders (CustomerID, Cost, Quantity, Model)
+    VALUES(1, 3000, 4, 'Panasonic')
 --**********
 
 SELECT * FROM Customer
 SELECT * FROM Orders
- --Add column in Table
 
-ALTER TABLE Orders ADD Model NVARCHAR(50);
+ --Add column in Table
+ALTER TABLE Customer ADD Code int;
+
+--Remove column from Table
+ALTER TABLE Customer
+DROP COLUMN Code;
 
 --****
-
 SELECT c.FirstName, c.LastName, o.CustomerID, o.Cost, o.Quantity FROM Orders o JOIN Customer c ON o.CustomerID = c.CustomerID
 where c.CustomerID = 2
 
