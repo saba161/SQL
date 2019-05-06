@@ -4,8 +4,6 @@ CREATE TABLE Customer(
     FirstName NVARCHAR(50),
     LastName NVARCHAR(50),
     Order_Product INT
-    FOREIGN KEY (CustomerId)  REFERENCES Customer (CustomerId)
-
 )
 
 --Second TABLE
@@ -15,6 +13,7 @@ CREATE TABLE Orders(
     Model NVARCHAR(50),
     Cost INT,
     Quantity INT,
+    FOREIGN KEY (CustomerId)  REFERENCES Customer (CustomerId)
 )
 
 --INSERT VALUES in First Table
@@ -29,24 +28,25 @@ INSERT INTO Orders (CustomerID, Cost, Quantity, Model)
     VALUES (2, 500, 9, 'Simens');
 INSERT INTO Orders (CustomerID, Cost, Quantity, Model)
     VALUES(1, 3000, 4, 'Panasonic')
---**********
 
+--Select 
 SELECT * FROM Customer
 SELECT * FROM Orders
 
- --Add column in Table
+--Add column in Table
 ALTER TABLE Customer ADD Code int;
 
 --Remove column from Table
 ALTER TABLE Customer
 DROP COLUMN Code;
 
---****
+--JOIN 
 SELECT c.FirstName, c.LastName, o.CustomerID, o.Cost, o.Quantity FROM Orders o JOIN Customer c ON o.CustomerID = c.CustomerID
 where c.CustomerID = 2
 
+--CREATE UNIQUE INDEX
 CREATE UNIQUE INDEX ID ON Orders (CustomerID);
 
-
+--DROP TABLE
 DROP TABLE Orders
 DROP TABLE Customer
