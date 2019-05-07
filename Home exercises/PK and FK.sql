@@ -25,7 +25,7 @@ INSERT INTO Customer (FirstName, LastName, Order_Product)
 
 --INSERT VALUES in Second Table
 INSERT INTO Orders (CustomerID, Cost, Quantity, Model)
-    VALUES (2, 500, 9, 'Simens');
+    VALUES (2, 2400, 9, 'iphone');
 INSERT INTO Orders (CustomerID, Cost, Quantity, Model)
     VALUES(1, 3000, 4, 'Panasonic')
 
