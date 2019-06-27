@@ -1,0 +1,55 @@
+SELECT * FROM ACCOUNT
+SELECT * FROM BRANCH
+SELECT * FROM CUSTOMER
+SELECT * FROM DEPARTMENT
+SELECT * FROM EMPLOYEE
+SELECT * FROM PRODUCT
+
+-- 1. გამოიტანეთ პროდუქტების სახელწოდებები და მათი შესაბამისი ანგარიშების იდენტიფიკატორები.
+SELECT p.NAME, a.ACCOUNT_ID FROM PRODUCT p
+JOIN ACCOUNT a on p.PRODUCT_CD = a.PRODUCT_CD
+
+-- 2. გამოიტანეთ იმ ანგარიშების იდენტიფიკატორები და ბალანსი, რომლებსაც ემსახურება Paula
+-- Roberts.
+SELECT e.FIRST_NAME,e.LAST_NAME,a.ACCOUNT_ID, a.AVAIL_BALANCE FROM ACCOUNT a
+JOIN EMPLOYEE e on e.EMP_ID = a.OPEN_EMP_ID
+WHERE e.FIRST_NAME = 'Paula' and e.LAST_NAME = 'Roberts'
+
+-- 3. გამოიტანეთ იმ ანგარიშის მფლობელების იდენტიფიკატორი, მისამართი და ბალანსზე არსებული
+-- თანხა, რომლებიც ცხოვრობენ ქალაქ Salem -ში.
+SELECT * FROM CUSTOMER c
+JOIN ACCOUNT a on c.CUST_ID = c.CUST_ID
+JOIN EMPLOYEE e on e.EMP_ID = a.OPEN_EMP_ID
+where c.CITY  like 'Salem'
+
+-- 4. გამოიტანეთ ქალაქ Woburn -ის საბანკო ფილიალის სახელწოდება და იქ გახსნილი ანგარიშების
+-- გახსნის თარიღები.
+SELECT b.NAME, a.OPEN_DATE FROM BRANCH b
+JOIN ACCOUNT a on b.BRANCH_ID = a.OPEN_BRANCH_ID
+where b.CITY = 'Woburn'
+
+-- 5. გამოიტანეთ თანამშრომელთა სრული სია (სახელი, გვარი) და დეპარტამენტები, სადაც ეს
+-- თანამშრომლები მუშაობენ.
+SELECT e.FIRST_NAME,e.LAST_NAME FROM EMPLOYEE e
+JOIN DEPARTMENT d on e.DEPT_ID = d.DEPT_ID
+
+-- 6. გამოიტანეთ ავტოსესხების (auto loan) და დეპოზიტების (certificate of deposit)
+-- სახელწოდებები და შესაბამისი ანგარიშების იდენტიფიკატორები
+SELECT p.NAME,a.ACCOUNT_ID FROM PRODUCT p
+join ACCOUNT a on a.PRODUCT_CD = p.PRODUCT_CD
+WHERE p.NAME in ('auto loan' , 'certificate of deposit')
+
+-- 7. გამოიტანეთ ქალაქ Quincy -ში განთავსებული ფილიალის მმართველის (Head Teller) გვარი და
+-- სახელი.
+SELECT e.FIRST_NAME, e.LAST_NAME FROM EMPLOYEE e
+join BRANCH b on b.BRANCH_ID = e.ASSIGNED_BRANCH_ID
+WHERE b.CITY = 'Quincy' and e.TITLE = 'Head teller'
+
+-- 8. გამოიტანეთ იმ ანგარიშის მფლობელის (dbo.CUSTOMER) სახელი და გვარი, რომლის ბალანსიც
+-- ამოწურულია.
+select * from ACCOUNT a 
+join CUSTOMER c on c.CUST_ID=a.CUST_ID
+where a.AVAIL_BALANCE=0;
+
+-- 9. გამოიტანეთ ქალაქ Salem -ის საბანკო ფილიალის სახელწოდება და იქ გახსნილი ანგარიშები,
+-- რომელთა ბალანსზე თანხა 2000 -ზე ნაკლებია.
